@@ -2,6 +2,7 @@
 
 **Summary:**  
 A serverless application that uses AWS Lambda, DynamoDB, and API Gateway to fetch a list of drinks, process user requests, and return personalized responses dynamically.
+This project demonstrates my skills in designing scalable serverless applications. It can be extended for real-world applications like personalized drink recommendations in cafes or restaurants.
 
 ---
 
@@ -25,7 +26,14 @@ A serverless application that uses AWS Lambda, DynamoDB, and API Gateway to fetc
 - **AWS DynamoDB:** Stores the list of drinks dynamically.
 - **AWS CloudWatch:** Provides logs for monitoring and debugging.
 
-## API call
+## Deployment Instructions
+To deploy this project, follow these steps:
+
+- **Create a DynamoDB table with the necessary schema.**
+- **Deploy the Lambda function using the provided code.**
+- **Configure API Gateway to route HTTP requests to your Lambda function."**
+
+## API Endpoint
 ```bash
 curl "https://rw6320bvkj.execute-api.eu-west-3.amazonaws.com/default/randomDrinkFunction?name=John&choice=tea"
 ```
