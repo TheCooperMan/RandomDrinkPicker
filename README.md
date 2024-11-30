@@ -31,13 +31,21 @@ curl "https://rw6320bvkj.execute-api.eu-west-3.amazonaws.com/default/randomDrink
 ```
 ## API Test Examples
 **Valid Drink Choice**
-![ValidDrinkChoice](examples/ValidDrinkChoice.png)
+![ValidDrinkChoice](images/ValidDrinkChoice.png)
 
 **No Drink Choice**
-![NoDrinkChoice](examples/NoDrinkChoice.png)
+![NoDrinkChoice](images/NoDrinkChoice.png)
 
 **Invalid Drink Choice**
-![InvalidDrinkChoice](examples/InvalidDrinkChoice.png)
+![InvalidDrinkChoice](images/InvalidDrinkChoice.png)
 
 **Guest with Invalid Choice**
-![GuestwithInvalidChoice](examples/GuestwithInvalidChoice.png)
+![GuestwithInvalidChoice](images/GuestwithInvalidChoice.png)
+
+## AWS Services:
+
+![Lambda](images/Lambda.png)
+![DynamoDB](images/DynamoDBTable.png)
+![CloudWatch](images/CloudWatch%20Logs.png)
+
+
