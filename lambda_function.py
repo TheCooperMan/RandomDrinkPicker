@@ -37,8 +37,27 @@ def lambda_handler(event, context):
     try:
         logger.info(f"Received event: {json.dumps(event)}")
 
-        # Handle the main drink endpoint
-        query_params = event.get("queryStringParameters", {})
+        # Ensure query parameters exist
+        query_params = event.get("queryStringParameters")
+        if not query_params:
+            drinks = fetch_drinks_from_dynamodb()
+            if not drinks:
+                logger.error("Drinks list is empty. Unable to proceed.")
+                return {
+                    'statusCode': 500,
+                    'body': json.dumps({"error": "No drinks available in the database."})
+                }
+            return {
+                'statusCode': 400,
+                'body': json.dumps({
+                    "message": (
+                        "Please provide your name and choose a drink. "
+                        f"Available options are: {', '.join(drinks)}."
+                    )
+                })
+            }
+
+        # Extract query parameters
         name_customer = query_params.get("name", "Guest")
         chosen_drink = query_params.get("choice", None)
         logger.info(f"Query parameters: name={name_customer}, choice={chosen_drink}")
@@ -51,7 +70,8 @@ def lambda_handler(event, context):
                 'statusCode': 500,
                 'body': json.dumps({"error": "No drinks available in the database."})
             }
-        if chosen_drink:    
+        
+        if chosen_drink:
             chosen_drink = chosen_drink.strip().capitalize()
             if chosen_drink in [drink.capitalize() for drink in drinks]:
                 message = f"{name_customer}, You chose {chosen_drink}."
